@@ -26,8 +26,25 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { MobileNav } from "@/components/mobile-nav";
 import Lottie from "lottie-react";
 import { siteConfig, animationConfig } from "@/lib/config";
+import { useState, useEffect } from "react";
 
 export default function MathTutorWebsite() {
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    const loadAnimation = async () => {
+      try {
+        const response = await fetch("/Exams Preparation..json");
+        const data = await response.json();
+        setAnimationData(data);
+      } catch (error) {
+        console.error("Failed to load animation:", error);
+      }
+    };
+
+    loadAnimation();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -122,12 +139,18 @@ export default function MathTutorWebsite() {
               {/* Lottie Animation */}
               <div className="flex justify-center lg:justify-end">
                 <div className="w-full max-w-md h-80 flex items-center justify-center overflow-hidden">
-                  <Lottie
-                    animationData={require("/Exams Preparation..json")}
-                    loop={animationConfig.loop}
-                    autoplay={animationConfig.autoplay}
-                    style={{ width: "100%", height: "100%" }}
-                  />
+                  {animationData ? (
+                    <Lottie
+                      animationData={animationData}
+                      loop={animationConfig.loop}
+                      autoplay={animationConfig.autoplay}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
