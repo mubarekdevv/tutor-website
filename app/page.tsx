@@ -34,11 +34,17 @@ export default function MathTutorWebsite() {
   useEffect(() => {
     const loadAnimation = async () => {
       try {
-        const response = await fetch("/Exams Preparation..json");
+        console.log("Loading animation from /data/exams-preparation.json");
+        const response = await fetch("/data/exams-preparation.json");
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
+        console.log("Animation loaded successfully:", data);
         setAnimationData(data);
       } catch (error) {
         console.error("Failed to load animation:", error);
+        setAnimationData(null);
       }
     };
 
@@ -147,8 +153,11 @@ export default function MathTutorWebsite() {
                       style={{ width: "100%", height: "100%" }}
                     />
                   ) : (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                      <p className="text-sm text-muted-foreground">
+                        Loading animation...
+                      </p>
                     </div>
                   )}
                 </div>
