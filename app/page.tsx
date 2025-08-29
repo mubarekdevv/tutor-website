@@ -300,40 +300,68 @@ export default function MathTutorWebsite() {
                 key={index}
                 className={`${
                   cert.verified ? "border-primary/20" : "border-dashed"
-                } hover:shadow-md transition-shadow`}
+                } group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5`}
               >
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between">
-                    <Award
-                      className={`h-6 w-6 ${
-                        cert.verified ? "text-primary" : "text-muted-foreground"
-                      }`}
-                    />
-                    {cert.verified && (
-                      <Badge variant="secondary" className="text-xs">
-                        Verified
-                      </Badge>
-                    )}
-                  </div>
-                  <CardTitle className="text-lg font-serif">
-                    {cert.title}
-                  </CardTitle>
-                  <CardDescription>
-                    {cert.issuer} • {cert.year}
-                  </CardDescription>
-                </CardHeader>
-                {cert.verified && (
-                  <CardContent className="pt-0">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="w-full text-foreground hover:text-primary transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      View Certificate
-                    </Button>
-                  </CardContent>
-                )}
+                {/* Background image + gradient overlay for readability */}
+                <div className="absolute inset-0">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transform-gpu transition-transform duration-500 group-hover:scale-105"
+                    style={{
+                      backgroundImage: `url(${
+                        (cert as any).image || "/placeholder.jpg"
+                      })`,
+                      filter: "saturate(0.9) contrast(1)",
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/85 to-background/95 group-hover:from-background/60 group-hover:via-background/70 group-hover:to-background/80 transition-colors" />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between">
+                      <Award
+                        className={`h-6 w-6 ${
+                          cert.verified
+                            ? "text-primary"
+                            : "text-muted-foreground"
+                        }`}
+                      />
+                      {cert.verified && (
+                        <Badge variant="secondary" className="text-xs">
+                          Verified
+                        </Badge>
+                      )}
+                    </div>
+                    <CardTitle className="text-lg font-serif">
+                      {cert.title}
+                    </CardTitle>
+                    <CardDescription>
+                      {cert.issuer} • {cert.year}
+                    </CardDescription>
+                  </CardHeader>
+                  {cert.verified && (
+                    <CardContent className="pt-0">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="w-full justify-center gap-2 text-foreground transition-all backdrop-blur-sm border border-transparent hover:border-primary/30 hover:bg-primary/10 hover:text-primary dark:hover:bg-primary/20 dark:hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.99]"
+                        onClick={() => {
+                          if (cert.link && cert.link !== "#") {
+                            window.open(
+                              cert.link,
+                              "_blank",
+                              "noopener,noreferrer"
+                            );
+                          }
+                        }}
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                        View Certificate
+                      </Button>
+                    </CardContent>
+                  )}
+                </div>
               </Card>
             ))}
           </div>

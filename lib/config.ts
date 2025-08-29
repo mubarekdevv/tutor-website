@@ -6,8 +6,9 @@ export const siteConfig = {
   name: "MathTutor Pro",
   title: "Online Math Tutor",
   description: "K-12 to University | Algebra, Geometry, Calculus",
-  tagline: "Clear explanations, interactive learning, and personalized guidance to help you master mathematics at every level",
-  
+  tagline:
+    "Clear explanations, interactive learning, and personalized guidance to help you master mathematics at every level",
+
   // Personal Information
   personal: {
     name: "Your Name",
@@ -21,22 +22,23 @@ export const siteConfig = {
   // Skills & Qualities
   skills: [
     "Clear Communication",
-    "Results-Focused", 
+    "Results-Focused",
     "Interactive Learning",
-    "Personalized Guidance"
+    "Personalized Guidance",
   ],
 
   // Portfolio/Worksheets
   portfolio: [
     {
       title: "Algebra Fundamentals",
-      description: "Linear equations, quadratic functions, and polynomial operations",
+      description:
+        "Linear equations, quadratic functions, and polynomial operations",
       icon: "📊",
       worksheets: 12,
       link: "#", // Add your actual worksheet links here
     },
     {
-      title: "Geometry Essentials", 
+      title: "Geometry Essentials",
       description: "Shapes, angles, proofs, and spatial reasoning",
       icon: "📐",
       worksheets: 8,
@@ -44,7 +46,7 @@ export const siteConfig = {
     },
     {
       title: "Calculus Mastery",
-      description: "Derivatives, integrals, and advanced calculus concepts", 
+      description: "Derivatives, integrals, and advanced calculus concepts",
       icon: "∫",
       worksheets: 15,
       link: "#",
@@ -52,7 +54,7 @@ export const siteConfig = {
     {
       title: "Advanced Topics",
       description: "Statistics, discrete math, and problem-solving strategies",
-      icon: "🧮", 
+      icon: "🧮",
       worksheets: 10,
       link: "#",
     },
@@ -60,6 +62,14 @@ export const siteConfig = {
 
   // Certificates & Qualifications
   certificates: [
+    {
+      title: "CLEP Pre-Calculus: Functions and Conic Sections",
+      issuer: "Alison",
+      year: "2025",
+      verified: true,
+      link: "https://alison.com/certification/check/40b82536e6",
+      image: "/alison-certificate.png",
+    },
     {
       title: "Advanced Mathematics Certificate",
       issuer: "Coursera",
@@ -69,7 +79,7 @@ export const siteConfig = {
     },
     {
       title: "Teaching Excellence in STEM",
-      issuer: "edX", 
+      issuer: "edX",
       year: "2023",
       verified: true,
       link: "#",
@@ -77,7 +87,7 @@ export const siteConfig = {
     {
       title: "Calculus Specialization",
       issuer: "Khan Academy",
-      year: "2023", 
+      year: "2023",
       verified: true,
       link: "#",
     },
@@ -109,7 +119,7 @@ export const siteConfig = {
     },
     {
       name: "James L.",
-      grade: "College Freshman", 
+      grade: "College Freshman",
       subject: "Algebra",
       rating: 5,
       text: "The personalized approach helped me build a strong foundation in algebra. Now I feel confident tackling more advanced math courses.",
@@ -117,7 +127,7 @@ export const siteConfig = {
     {
       name: "Parent - Munirah J.",
       grade: "8th Grader",
-      subject: "Geometry", 
+      subject: "Geometry",
       rating: 5,
       text: "My daughter's confidence in math has improved dramatically. The interactive learning style really works for visual learners like her.",
     },
@@ -145,14 +155,15 @@ export const siteConfig = {
   // Call-to-Action Buttons
   cta: {
     primary: "Schedule a Lesson",
-    secondary: "Contact Me", 
+    secondary: "Contact Me",
     portfolio: "View Portfolio",
     testimonials: "Share Your Experience",
   },
 
   // Footer
   footer: {
-    copyright: "© 2024 Online Math Tutor. Helping students excel in mathematics from K-12 to university level.",
+    copyright:
+      "© 2024 Online Math Tutor. Helping students excel in mathematics from K-12 to university level.",
     tagline: "Empowering students through personalized mathematics education",
   },
 };
